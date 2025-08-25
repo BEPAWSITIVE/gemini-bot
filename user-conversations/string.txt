@@ -1,0 +1,9 @@
+[2025-08-25 17:47:50] User: hello
+[2025-08-25 17:47:50] Assistant: Hello! How can I help you today?
+--------------------------------------------------
+[2025-08-25 17:51:11] User: marks of deeepak mishra in each subject
+[2025-08-25 17:51:11] Assistant: I am sorry, this document doesn't contain information about Deepak Mishra. It contains information about Brijesh Pandey.
+--------------------------------------------------
+[2025-08-25 17:52:33] User: what is the form number of brijesh pandey
+[2025-08-25 17:52:33] Assistant: The form number for Brijesh Pandey is 120793717000366020.
+--------------------------------------------------
