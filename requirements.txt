@@ -6,3 +6,4 @@ google-genai
 langchain-chroma
 langchain-community
 python-dotenv
+python-multipart
