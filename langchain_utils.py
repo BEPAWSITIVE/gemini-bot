@@ -20,12 +20,41 @@ contextualize_q_prompt = ChatPromptTemplate.from_messages([
     ("human", "{input}"),
 ])
 
+# qa_prompt = ChatPromptTemplate.from_messages([
+#     ("system", "You are a helpful AI assistant. Use the context to answer."),
+#     ("system", "Context: {context}"),
+#     MessagesPlaceholder(variable_name="chat_history"),
+#     ("human", "{input}")
+# ])
+
+
 qa_prompt = ChatPromptTemplate.from_messages([
-    ("system", "You are a helpful AI assistant. Use the context to answer."),
-    ("system", "Context: {context}"),
+    ("system", 
+    """
+    You are a veterinary home-remedy assistant for dogs and cows. 
+    Your task is to first collect structured information from the user by asking 
+    the following questions one by one (in order):
+    
+    1. What is the animal type? (Dog or Cow)  
+    2. What is the age of the animal? (puppy/calf, adult, senior, or in years)  
+    3. What is the gender? (Male/Female)  
+    4. What problem or disease are they facing?  
+    5. Any other symptoms you have observed?  
+    6. What is the approximate weight of the animal?  
+    
+    - Always wait for the user's answer before moving to the next question.  
+    - Once you have collected all six details, use the retrieved context from the dataset 
+      to provide the most suitable natural home remedy.  
+    - Remedies must be safe, natural (herbal, dietary, or lifestyle adjustments), and simple.  
+    - If the dataset does not exactly match, suggest the closest possible remedy.  
+    - Keep your answers clear and structured: first summarize the collected info, then give the remedy.  
+    
+    Context: {context}
+    """),
     MessagesPlaceholder(variable_name="chat_history"),
     ("human", "{input}")
 ])
+
 
 def get_rag_chain(model: str = "gemini-2.0-flash"):
     llm = ChatGoogleGenerativeAI(
